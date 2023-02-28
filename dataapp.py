@@ -4,9 +4,9 @@ from PIL import Image
 import plotly.express as px
 from streamlit_option_menu import option_menu
 
-df = pd.read_csv("D:\\innomatics_ds_internship\\assign\\earthquakes11.csv")
+df = pd.read_csv(r"C:\\Users\USER\\Desktop\\Innomatics Internship\\project_02\\resources\\data\\earthquakes_11.csv", encoding = "cp1252")
 df1=df.dropna()
-staticdata=pd.read_csv("D:\\innomatics_ds_internship\\assign\\data earth q.csv")
+staticdata=pd.read_csv(r"C:\\Users\\USER\\Desktop\\Innomatics Internship\\project_02\\resources\\data\\data earth q.csv", encoding = "cp1252")
 Deaths=df1['Deaths']
 Year=df1['Year']
 Magnitude=df1['Magnitude']
@@ -29,7 +29,7 @@ if selected=='About this app':
 if selected=='Earthquakes':
 
     st.title(":red[EARTHQUAKES]")
-    image = Image.open("D:\\innomatics_ds_internship\\assign\\ecuador-gdfca57680_1920.jpg")
+    image = Image.open(r"C:\Users\USER\Desktop\Innomatics Internship\project_02\resources\images\earthquake.jpg")
     st.image(image)
     st.header("Earthquakes in the world")
     st.markdown("**:red[Earthquake]** is the shaking of the earth. An earth quake can" )
