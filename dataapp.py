@@ -4,9 +4,20 @@ from PIL import Image
 import plotly.express as px
 from streamlit_option_menu import option_menu
 
-df = pd.read_csv(r"C:\\Users\USER\\Desktop\\Innomatics Internship\\project_02\\resources\\data\\earthquakes_11.csv", encoding = "cp1252")
-df1=df.dropna()
-staticdata=pd.read_csv(r"C:\\Users\\USER\\Desktop\\Innomatics Internship\\project_02\\resources\\data\\data earth q.csv", encoding = "cp1252")
+# absolute path to this file
+FILE_DIR = os.path.dirname(os.path.abspath(__file__))
+# absolute path to this file's root directory
+# PARENT_DIR = os.path.join(FILE_DIR, os.pardir)
+# absolute path of directory_of_interest
+dir_of_interest = os.path.join(FILE_DIR, "resources")
+
+IMAGE_PATH = os.path.join(dir_of_interest, "images", "earthquake.jpg")
+DATA_PATH = os.path.join(dir_of_interest, "data", "earthquakes_11.csv")
+DATA_PATH_One = os.path.join(dir_of_interest, "data", "data earth q.csv")
+
+df =  pd.read_csv(DATA_PATH_One, encoding = "cp1252")
+DATA = pd.read_csv(DATA_PATH, encoding = "cp1252")
+df1=DATA.dropna()
 Deaths=df1['Deaths']
 Year=df1['Year']
 Magnitude=df1['Magnitude']
@@ -23,13 +34,13 @@ if selected=='About this app':
     st.subheader(" this streamlit app will tell you about some :blue[stats] of :red[earthquakes] held in last decades.")
     st.markdown("the fatalities they caused and their magnitude is shown in the table.")
     st.markdown("along with the places in which earthquakes occurs, we have classified them and given them rank based on thier magnitude of scale and the date of their occurence is aslo mentioned int he table.")
-    st.dataframe(staticdata)
+    st.dataframe(df)
     
 
 if selected=='Earthquakes':
 
     st.title(":red[EARTHQUAKES]")
-    image = Image.open(r"C:\Users\USER\Desktop\Innomatics Internship\project_02\resources\images\earthquake.jpg")
+    image = Image.open(IMAGE_PATH)
     st.image(image)
     st.header("Earthquakes in the world")
     st.markdown("**:red[Earthquake]** is the shaking of the earth. An earth quake can" )
